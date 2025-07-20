@@ -60,7 +60,7 @@ export const constructFilterPipeline = (fields?: IProductFilter) => {
         sort = { trending: -1 }
         break
       case 'new_arrival':
-        sort = { new_arrival: -1 }
+        sort = { createdAt: -1 }
         break
       default:
         sort = {}

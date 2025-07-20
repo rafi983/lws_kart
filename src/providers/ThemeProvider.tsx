@@ -4,8 +4,11 @@ import { ThemeProvider as NextThemeProvider } from 'next-themes'
 import { ReactNode, useState } from 'react'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  let localStorageTheme =
-    JSON.parse(localStorage.getItem(LC_THEME_KEY) as string) ?? false
+  let localStorageTheme = false
+  if (typeof window !== 'undefined') {
+    localStorageTheme =
+      JSON.parse(localStorage.getItem(LC_THEME_KEY) as string) ?? false
+  }
 
   const [isDark, setIsDark] = useState(localStorageTheme)
   return (

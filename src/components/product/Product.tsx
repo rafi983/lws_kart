@@ -86,12 +86,16 @@ const Product = async ({
             </Link>
             <div className='flex items-baseline mb-1 space-x-2'>
               <p className='text-xl text-primary font-semibold '>
-                ${discount_price.toFixed(2)}
+                {typeof discount_price === 'number' ? `$${discount_price.toFixed(2)}` : 'N/A'}
               </p>
-              <p className='text-sm text-gray-400 line-through'>${price}</p>
+              <p className='text-sm text-gray-400 line-through'>
+                {typeof price === 'number' ? `$${price.toFixed(2)}` : 'N/A'}
+              </p>
               <Badge className='bg-rose-500 space-x-1 hover:bg-rose-400'>
                 <MdDiscount />
-                <p>-{discountPercentage.toFixed(2)}%</p>
+                <p>
+                  -{typeof discountPercentage === 'number' ? discountPercentage.toFixed(2) : '0.00'}%
+                </p>
               </Badge>
             </div>
             <div className='flex items-center'>
